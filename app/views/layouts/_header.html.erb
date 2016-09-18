@@ -1,8 +1,21 @@
+<h3>Welcome to Flatiron Store. <%= "Signed in as #{current_user.email}" if current_user %></h3>
 <nav class="">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
-        <% if !!@cart %>
-          <li> <%= link_to "Cart", cart_path(current_cart) %></li>
-        <% end %>
-    </ul>
+  <ul class="list-group">
+    <li class="list-group-item"><%= link_to "Store Home", store_path %></li>
+
+
+    <% if !user_signed_in? %>
+
+    <li class="list-group-item"><%= link_to "Sign up", new_user_registration_path %></li>
+    <li class="list-group-item"><%= link_to "Sign in", new_user_session_path %></li>
+    <% end %>
+
+    <% if user_signed_in? %>
+    <li class="list-group-item"><%= link_to "Sign out", destroy_user_session_path, :method => "delete" %></li>
+    <% end %>
+
+    <% if current_user && current_user.current_cart %>
+      <li class="list-group-item"><%= link_to "Cart", cart_path(current_user.current_cart) %></li>
+    <% end %>
+  </ul>
 </nav>

@@ -20,8 +20,8 @@
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
 body {
-  padding-top: 70px;
   padding-bottom: 30px;
+  padding-left: 20px;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -32,4 +32,12 @@ body {
 
 .theme-showcase > p > .btn {
   margin: 5px 0;
+}
+
+.list-group {
+  display: flex;
+}
+
+.list-group-item:last-child {
+  margin-bottom: -1px;
 }
